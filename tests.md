@@ -30,5 +30,16 @@ Expected Output: 'odecay'
  
  Examples: "quick" becomes "ickquay" while "squeal" becomes "quealsay."
 
+ Test: It should return 'quealsay' when passed 'squeal'
+ Code:
+```javascript
+
+const squeal = 'squeal';
+pigLatinTranslate(squeal);
+
+```
+
+ Expected Output: 'quealsay'
+
 
 
