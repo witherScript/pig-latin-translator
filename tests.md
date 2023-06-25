@@ -11,13 +11,20 @@ pigLatinTranslate(vowelWord);
 ```
 Expected Output: "away"
 
-
-
 Examples: "away" becomes "awayway" and "okay" becomes "okayway."
 
 2. Words beginning with one or more consonants, move all of the first consecutive consonants to the end and add "ay". 
  
  Examples: "code" becomes "odecay" and "move" becomes "ovemay."
+
+Test: It should return 'odecay' when passed 'code'
+Code:
+```javascript
+const consonantStr = 'code';
+pigLatinTranslate(consonantStr);
+
+```
+Expected Output: 'odecay'
 
 3. If the first consonants include "qu", move the "q" and the "u." Don't forget about words like "squeal" where "qu" doesn't come first! 
  
