@@ -2,6 +2,19 @@ function pigLatinTranslate(str){
   const vowels = ['a','e','i','o','u'];
   let strArr = str.split(' ');
 
+  const regex = new RegExp('/[aeiou]/', 'gi');
+  
+  
+  
+  if(str[0].match(regex)){
+    strArr[index]+='way';
+  }
+  else {
+
+    //regex will add consecutive consonants to the end and then add ay
+    str.replace(regex, )
+  }
+  
   strArr.forEach(function(word, index){
     if(vowels.includes(word[0])){
       strArr[index] += 'way';
