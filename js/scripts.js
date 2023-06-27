@@ -1,39 +1,25 @@
 function pigLatinTranslate(str){
-  const vowels = ['a','e','i','o','u'];
   let strArr = str.split(' ');
+  let result = '';
 
-  const regex = new RegExp('/[aeiou]/', 'gi');
-  
-  
-  
-  if(str[0].match(regex)){
-    strArr[index]+='way';
-  }
-  else {
-
-    //regex will add consecutive consonants to the end and then add ay
-    str.replace(regex, )
-  }
+  const firstLetterVowelRegex = new RegExp('\\b[aeiou]', 'i');
+  const consonantRegex = new RegExp('\\b[^aeiou]+', 'i');
+  const quackyWords = new RegExp('\\bqu', "i");
   
   strArr.forEach(function(word, index){
-    if(vowels.includes(word[0])){
-      strArr[index] += 'way';
+    if(firstLetterVowelRegex.test(word)) {
+      strArr[index] = word + 'way';
     }
-    else {
-      let stoppingPoint = 0;
-      for(let i = 0; i < word.length; i++) {
-        if(vowels.includes(word[i])) {
-          stoppingPoint = i;
-          // Special case for "qu"
-          if(word[i-1] === 'q' && word[i] === 'u') {
-            stoppingPoint++;
-          }
-          break;
-        }
-      }
-      strArr[index] = word.slice(stoppingPoint) + word.slice(0, stoppingPoint) + 'ay';
+    else if(consonantRegex.test(word)) {
+      let consonantSeq = word.match(consonantRegex)[0]
+      strArr[index] = word.replace(consonantRegex, '') + consonantSeq + 'ay';
+    }
+    if(quackyWords.test(word) && consonantRegex.test(word)){
+      strArr[index] = word.replace(quackyWords, '') + 'quay';
     }
   });
 
   return strArr.join(' ');
+  
+
 }
